@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+</head>
+<body>
+
+ <a href="{% url 'home' %}">Go to Home</a>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+        <label for="category">Choose a category:</label>
+        {% csrf_token %}
+        <select name="category" id="category">
+            <option value="Reminder">Reminder</option>
+            <option value="Shopping">Shopping</option>
+            <option value="School">School</option>
+            <option value="Chores">Chores</option>
+            <option value="Job">Job</option>
+        </select>
+
+        <label for="days">Which day?:</label>
+        {% csrf_token %}
+            <select name="days" id="days">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+  <br><br>
+
+        <input type="submit" id="submitButton" value="Submit"/>
+</form>
+
+    {% if error %}
+        {{ error }}
+    {% endif %}
+
+    {% if message %}
+        <table class="results">
+          <tr>
+                <th>Note</th>
+                <th>Date</th>
+                <th>Time</th>
+          </tr>
+
+            {% for i in message %}
+
+            <tr>
+                <td>{{i.0}}</td>
+                <td>{{i.1}}</td>
+                <td>{{i.2}}</td>
+            </tr>
+
+            {% endfor %}
+        </table>
+    {% endif %}
+
+</body>
+</html>

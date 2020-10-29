@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Response Page</title>
+</head>
+<body>
+    {% if user_message %}
+        {{ user_message }}
+    {% endif %}
+    <a href="{% url 'home' %}">Go back</a>
+<table class="results">
+  <tr>
+        <th>Notes</th>
+        <th>Day of Week</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Category</th>
+  </tr>
+
+    {% for i in message %}
+
+    <tr>
+        <td>{{i.0}}</td>
+        <td>{{i.1}}</td>
+        <td>{{i.2}}</td>
+        <td>{{i.3}}</td>
+        <td>{{i.4}}</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
